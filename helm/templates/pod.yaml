@@ -5,6 +5,6 @@ metadata:
 spec:
   containers:
     - name: helloworld-app
-      image: {{.Values.helloworld.image}}
+      image: {{.Values.helloworld.image.name}}:{{.Values.helloworld.image.version}}
       ports:
         - containerPort: 3000

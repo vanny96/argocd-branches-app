@@ -1,2 +1,4 @@
 helloworld:
-  image: ???
+  image:
+    name: ghcr.io/vanny96/helloworld
+    version: 1.0
