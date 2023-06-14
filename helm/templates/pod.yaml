@@ -1,13 +1,22 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: {{.Release.Name}}-helloworld
 spec:
-  containers:
-    - name: helloworld-app
-      image: {{.Values.helloworld.image.name}}:{{.Chart.AppVersion}}
-      ports:
-        - containerPort: 3000
-      env:
-        - name: ARGOCD_BRANCHES_APP_ENV
-          value: {{.Values.helloworld.environment}}
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{.Release.Name}}-helloworld
+  template:
+    metadata:
+      labels:
+        app: {{.Release.Name}}-helloworld
+    spec:
+      containers:
+        - name: helloworld-app
+          image: {{.Values.helloworld.image.name}}:{{.Chart.AppVersion}}
+          ports:
+            - containerPort: 3000
+          env:
+            - name: ARGOCD_BRANCHES_APP_ENV
+              value: {{.Values.helloworld.environment}}
