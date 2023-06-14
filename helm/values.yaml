@@ -1,3 +1,4 @@
 helloworld:
+  environment: unknown
   image:
     name: ghcr.io/vanny96/helloworld

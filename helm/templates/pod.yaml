@@ -8,3 +8,6 @@ spec:
       image: {{.Values.helloworld.image.name}}:{{.Chart.AppVersion}}
       ports:
         - containerPort: 3000
+      env:
+        - name: ARGOCD_BRANCHES_APP_ENV
+          value: {{.Values.helloworld.environment}}
